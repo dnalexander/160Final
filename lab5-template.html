@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<title>Donovan Alexander's Lab 5</title>
+<!-- Donovan Alexander (donalexa) 5/18/15 : Lab 5 - Textured Shark
+                                            This lab assignment takes our shark model and applies a tiger texture to it. -->
+<html>
+<!--script id="vertex-shader" type="x-shader/x-vertex">
+	//scale * rotX * rotZ * 
+	//new shader code, should handle persp view and spec light
+	//declare vars to be used
+	attribute mediump vec4 vPosition, vNormal;
+	uniform mat4 xRot, yRot, zRot, scale, pMatrix, transMat;
+	varying mediump vec4 finalFragmentColor;
+	void main() {
+		//give value to vars to be used
+		//colors and locations for calculating color
+		mediump vec4 surfaceColor =  vec4(0.5, 0.5, 0.5, 1.0);
+		mediump vec4 lightColor =    vec4(0.0, 0.0, 1.0, 1.0);
+		mediump vec4 lightLocation = vec4(-30.0, -20.0, -50.0, 1.0);
+		mediump vec3 eyePos = vec3(1.0, 1.0, 1.0);
+		//color/light calculations
+		float angle = dot(vNormal.xyz, normalize(lightLocation.xyz - vec3(1,1,1)));
+		mediump vec3 refLightDir = reflect((vPosition.xyz - lightLocation.xyz), vNormal.xyz);
+		float temp = -(dot((vPosition.xyz - (-30.0,-20.0,-50.0)),refLightDir));
+		float refLightWeight = max(temp,0.0);
+		refLightWeight = pow(refLightWeight, 10.0);
+		float lightScalar = max(angle, 0.0);
+		mediump vec4 cColor = surfaceColor * lightColor * lightScalar;
+		mediump vec4 sColor = refLightWeight * lightColor * cColor;
+		finalFragmentColor = cColor + sColor;
+		//position calculations
+		mediump vec4 finalPos = scale  * xRot * yRot * transMat * vPosition;
+		gl_Position = pMatrix * finalPos;
+	}
+</script-->
+<script id="vertex-shader" type="x-shader/x-vertex">
+	attribute vec4 vPosition, vNormal;
+	uniform mat4 pMatrix, transMat, xRot, yRot, zRot, scale, normXR, normYR, normS, normT, totalNormMatrix;
+	uniform vec4 surfaceColor, lightColor, lightLocation;
+	varying mediump vec4 finalFragmentColor;
+	void main() {
+		mediump vec4 lightColor = vec4(1.0, 0.0, 1.0, 1.0);
+		mediump vec4 lightLocation = vec4(-30.0, -20.0, -50.0, 1.0);
+		mediump vec4 normPos = totalNormMatrix * vNormal;
+		//diffuse lighting
+		float angle = dot(normPos.xyz, normalize(lightLocation.xyz-vec3(40.0,-20.0,-10)));
+		float lightScalar = max(angle, 0.0);
+
+		finalFragmentColor = surfaceColor * lightColor * lightScalar;
+		//finalFragmentColor = normalize(vPosition) * 0.5 + 0.5;
+		mediump vec4 finalPos = scale * transMat * xRot * yRot * vPosition;
+		gl_Position = pMatrix * finalPos;
+	}
+</script>
+<script id="fragment-shader" type="x-shader/x-fragment">
+	varying mediump vec4 finalFragmentColor;
+	void main() {
+		gl_FragColor = vec4(finalFragmentColor.rgb, 1.0);
+	}
+</script>
+<!--form id="form1">
+    <!-- This form holds all of the sliders for shark manipulation
+        #0:xTrans; #1:yTrans; #2:zTrans
+        #3:xRot;   #4:yRot;   #5:zRot
+        #6:xScale; #7:yScale; #8:zScale>
+    <pre>
+X-Translation<input type="range" name="X-Translation" min="-50" max="50">		Y-Translation<input type="range" name="Y-Translation" min="-50" max="50">		Z-Translation<input type="range" name="Z-Translation" min="-50" max="50">
+
+X-Rotation   <input type="range" name="X-Rotation" min="-6.18" max="6.18" step="0.3925" value="0.0">		Y-Rotation   <input type="range" name="Y-Rotation" min="-6.18" max="6.18" step="0.3925" value="0">		Z-Rotation   <input type="range" name="Z-Rotation" min="-6.18" max="6.18" step="0.3925" value="0">
+
+X-Scaling    <input type="range" name="X-Scaling" min="-0.05" max="0.05" value="0.0" step="0.001">		Y-Scaling    <input type="range" name="Y-Scaling" min="-0.05" max="0.05" value="0.0" step="0.001">		Z-Scaling    <input type="range" name="Z-Scaling" min="-0.05" max="0.05" value="0.0" step="0.001">
+  </pre>
+</form-->
+<p>Selected Shark:</p>
+<p id="shark"></p>
+<!-- These are include statements for all of the files necessary to run the program -->
+<script type="text/javascript" src="three.js"></script>
+<script type="text/javascript" src="webgl-utils.js"></script>
+<script type="text/javascript" src="initShaders.js"></script>
+<script type="text/javascript" src="MV.js"></script>
+<script type="text/javascript" src="handleInput.js"></script>
+<script type="text/javascript" src="matrices.js"></script>
+<script type="text/javascript" src="myUtils.js"></script>
+<script type="text/javascript" src="lab5-template.js"></script>
+<body onload="init(); sharkify()">
+<canvas id="gl-canvas" width="600" height="600" onContextMenu="return false;">
+Oops ... your browser doesn't support the HTML5 canvas element
+</canvas>
+<button onclick="render()">Draw</button>
+</body>
+</html>
