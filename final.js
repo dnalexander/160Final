@@ -28,7 +28,7 @@ renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
 
 var jsonLoader = new THREE.JSONLoader();
-jsonLoader.load("lamp.js", createScene);
+jsonLoader.load("lamp_joined.js", createScene);
 /*var objLoader = new THREE.OBJLoader();
 objLoader.load("lamp.obj", createScene);*/
 function createScene(geometry, materials){
@@ -36,6 +36,7 @@ function createScene(geometry, materials){
         shading: THREE.SmoothShading
     });
     var mesh = new THREE.Mesh(geometry, mat);
+    console.log(mesh);
     lamp.add(mesh);
 }
 function render() {
