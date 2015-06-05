@@ -27,10 +27,8 @@ var renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
 
-var jsonLoader = new THREE.JSONLoader();
+/*var jsonLoader = new THREE.JSONLoader();
 jsonLoader.load("lamp_joined.js", createScene);
-/*var objLoader = new THREE.OBJLoader();
-objLoader.load("lamp.obj", createScene);*/
 function createScene(geometry, materials){
     var mat = new THREE.MeshPhongMaterial({
         shading: THREE.SmoothShading
@@ -38,7 +36,8 @@ function createScene(geometry, materials){
     var mesh = new THREE.Mesh(geometry, mat);
     console.log(mesh);
     lamp.add(mesh);
-}
+}*/
+loadModel();
 function render() {
     requestAnimationFrame( render );
     renderer.render( scene, camera );
