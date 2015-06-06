@@ -86,7 +86,6 @@ function addData(geometry, materials){
     mesh.name = name;
     lamp.add(mesh);
 }
-console.log(lamp);
 function render() {
     requestAnimationFrame( render );
     renderer.render( scene, camera );
