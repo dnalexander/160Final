@@ -13,26 +13,10 @@ var windowHalfX = window.innerWidth/2;
 var windowHalfY = window.innerHeight/2;
 function inputDown(e){
     //This function handles mouse clicks on the canvas to determine where you clicked and if a shark was selected\
-    source.mouseXPos = (e.clientX-windowHalfX) * 10;
-    source.mouseYPos = (-(e.clientY-windowHalfX)) * 10;
+    source.mouseXPos = (e.clientX-document.left) * 10;
+    source.mouseYPos = (-(e.clientY-document.top-document.width)) * 10;
     if(e.type == "mousedown"){
         pressed = true;
-        /*//Set color picking vars
-        var bgColor = 4294934656;
-        var sharkOneColor = 4294902015;
-        var sharkTwoColor = 4294901760;
-        //left click
-        if(e.button == 0){
-            //on left click, set the active shark according to which one was clicked
-            var pixelColor = colorData[(canvas.width*source.mouseYPos)+source.mouseXPos];
-            if(pixelColor != bgColor && pixelColor == sharkOneColor){
-                activeShark = "Pink";
-            } else if(pixelColor != bgColor && pixelColor == sharkTwoColor){
-                activeShark = "Blue";
-            } else{
-                activeShark = "None";
-            }
-            document.getElementById("shark").innerHTML = activeShark;*/
     }
 }
 
@@ -46,8 +30,8 @@ function inputMove(e){
     if(e.button == 0 && pressed) {
         //This is the case where you have left clicked and are holding the button
         //We calculate the new (x, y) of the mouse
-        var newX = (e.clientX - windowHalfX) * 10;
-        var newY = (-(e.clientY - windowHalfY)) * 10;
+        var newX = (e.clientX - document.left) * 10;
+        var newY = (-(e.clientY - document.top - document.width)) * 10;
         //change the camera position based on where you drag the mouse
         //X-axis movement is determined by moving the mouse left/right of its originally clicked point
         //Y-axis movement is determined by moving the mouse above/below its originally clicked point
@@ -65,7 +49,7 @@ function inputMove(e){
     if(e.button == 2 && pressed){
         //This is the case where you have right clicked and are holding the button
         //We only need a new y position because we move up and down to zoom
-        var newY = (-(e.clientY-windowHalfY)) * 10;
+        var newY = (-(e.clientY-document.top - document.width)) * 10;
         //If we move up, move the camera "forward", if we move down, move the camera "backwards"
         if(newY > source.mouseYPos){
             camera.position.z += 0.01;

@@ -1,8 +1,6 @@
 /**
  * Created by Donovan on 6/1/2015.
  */
-
-var lamp = new THREE.Group();
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 var spotLight = new THREE.SpotLight(0xffffff);
@@ -42,7 +40,7 @@ function init() {
      console.log(mesh);
      lamp.add(mesh);
      }*/
-    loadPart("lamp_base");
+    /*loadPart("lamp_base");
     loadPart("top_neck_sides");
     loadPart("top_neck_pin_top");
     loadPart("top_neck_pin_bottom");
@@ -69,5 +67,5 @@ function init() {
     loadPart("bottom_neck_sides");
     loadPart("bottom_brace_sides");
     loadPart("base_to_neck_sides");
-    loadPart("base_to_neck_tower");
+    loadPart("base_to_neck_tower");*/
 }

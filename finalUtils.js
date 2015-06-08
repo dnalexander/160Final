@@ -21,6 +21,18 @@ function moveCam(dir){
         case "out":
             camera.position.z+=1;
             break;
+        case "rotLeft":
+            camera.rotation.y+=Math.PI/32;
+            break;
+        case "rotRight":
+            camera.rotation.y-=Math.PI/32;
+            break;
+        case "rotUp":
+            camera.rotation.x+=Math.PI/32;
+            break;
+        case "rotDown":
+            camera.rotation.x-=Math.PI/32;
+            break;
     }
 }
 
@@ -48,4 +60,11 @@ function addData(geometry, materials){
 function render() {
     requestAnimationFrame( render );
     renderer.render( scene, camera );
+}
+
+function loadOrdered(){
+    requestAnimationFrame(loadOrdered);
+    loadBase();
+    loadBTNT();
+    loadBNTB();
 }

@@ -133,3 +133,4 @@ function addData(geometry, materials){
     mesh.name = data.name;
     lamp.add(mesh);
 }*/
+var lamp = new THREE.Group();
