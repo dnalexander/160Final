@@ -16,48 +16,16 @@
 <script src="finalUtils.js"></script>
 <script src="loads.js"></script>
 <script src="final.js"></script>
-<button onclick="render()">Draw</button>
-<button onclick="moveCam('left')">Pan Left</button>
-<button onclick="moveCam('right')">Pan Right</button>
-<button onclick="moveCam('up')">Pan Up</button>
-<button onclick="moveCam('down')">Pan Down</button><br>
-<!--button onclick="moveCam('rotLeft')">Rotate Left</button>
-<button onclick="moveCam('rotRight')">Rotate Right</button>
-<button onclick="moveCam('rotUp')">Rotate Up</button>
-<button onclick="moveCam('rotDown')">Rotate Down</button-->
-<button onclick="moveCam('in')">Zoom In</button>
-<button onclick="moveCam('out')">Zoom Out</button>
-<button onclick="loadBase()">debug</button>
-<button onclick="temp[0].position.x+=1;">debug2</button>
-<button onclick="temp[1].position.x+=1;">debug3</button><br>
+<pre>Camera Controls:
+<button onclick="moveCam('left')">Move Left</button><button onclick="moveCam('right')">Move Right</button><button onclick="moveCam('up')">Move Up</button><button onclick="moveCam('down')">Move Down</button><button onclick="moveCam('in')">Move In</button><button onclick="moveCam('out')">Move Out</button>
+<button onclick="moveCam('rotLeft')">Rotate Left</button><button onclick="moveCam('rotRight')">Rotate Right</button><button onclick="moveCam('rotUp')">Rotate Up</button><button onclick="moveCam('rotDown')">Rotate Down</button><button onclick="focusCam()">Focus On Lamp</button>
+
+Lamp Controls:
+<button onclick="loadBase()">Make</button><button onclick="demo=true;">Demo Links</button>
+
+Inidividual Demo Buttons (Make lamp first to avoid undefined errors):
+<button onclick="temp[0].position.x+=0.1;">MoveBase</button><button onclick="temp[1].rotation.y+=Math.PI/32;">Rotate Base-To-Neck</button>
+<button onclick="temp[27].rotation.x+=Math.PI/32;">Rotate Head</button><button onclick="temp[15].position.x+=0.1;">Move Back of Neck</button>
+</pre>
 </body>
-<button onclick="loadPart('lamp_base')">1</button>
-<button onclick="loadPart('base_to_neck_tower')">2</button>
-<button onclick="loadPart('bottom_neck_to_base')">3</button>
-<button onclick="loadPart('base_to_neck_sides')">4</button>
-<button onclick="loadPart('bottom_pin_back')">5</button>
-<button onclick="loadPart('bottom_pin_front')">6</button>
-<button onclick="loadPart('bottom_pin_mid')">7</button>
-<button onclick="loadPart('bottom_neck_sides')">8</button>
-<button onclick="loadPart('center_pin_back')">9</button>
-<button onclick="loadPart('bottom_brace_sides')">10</button>
-<button onclick="loadPart('left_bands')">11</button>
-<button onclick="loadPart('right_bands')">12</button>
-<button onclick="loadPart('center_pin_mid')">13</button>
-<button onclick="loadPart('center_pin_front')">14</button>
-<button onclick="loadPart('center_neck_front')">15</button>
-<button onclick="loadPart('center_neck_back')">16</button>
-<button onclick="loadPart('front_spring_pin')">17</button>
-<button onclick="loadPart('neck_pin_back')">18</button>
-<button onclick="loadPart('left_spring')">19</button>
-<button onclick="loadPart('right_spring')">20</button>
-<button onclick="loadPart('top_neck_sides')">21</button>
-<button onclick="loadPart('top_neck_pin_top')">22</button>
-<button onclick="loadPart('top_neck_pin_bottom')">23</button>
-<button onclick="loadPart('top_neck_pin_back')">24</button>
-<button onclick="loadPart('head_to_bulb')">25</button>
-<button onclick="loadPart('head_case')">26</button>
-<button onclick="loadPart('bulb')">27</button>
-<button onclick="loadPart('head_to_neck')">28</button><br>
-<button onclick="childify()">Create Hierarchy</button>
 </html>

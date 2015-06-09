@@ -111,4 +111,5 @@ function loadBulb(){
 }
 function loadHTN(){
     loadPart('head_to_neck');
+    setTimeout(childify, 100);
 }

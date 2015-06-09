@@ -36,6 +36,14 @@ function moveCam(dir){
     }
 }
 
+function focusCam(){
+    if(temp[0]){
+        camera.lookAt(new THREE.Vector3(temp[0].position.x, temp[0].position.y, temp[0].position.z));
+    }else{
+        alert("You can't focus on a non-existent lamp! Make the lamp first.");
+    }
+}
+
 function loadPart(name){
     var jsonLoader = new THREE.JSONLoader();
     jsonLoader.load("./modelData/"+name+".js", function(geometry){
@@ -47,9 +55,36 @@ function loadPart(name){
         lamp.add(mesh);
     });
 }
-
+var demo=false;
+var i=0;
+var j=0;
+var k=0;
+var m=0;
+var n=0;
 function render() {
     requestAnimationFrame( render );
+    if(demo && temp[0]){
+        if(i<20){
+            temp[0].position.x += 0.1;
+            i++;
+        }
+        if(j<32 && i==20){
+            temp[1].rotation.y+= Math.PI/32;
+            j++;
+        }
+        if(k<15 && j==32){
+            temp[2].rotation.z+= Math.PI/32;
+            k++;
+        }
+        if(m<15 && k==15){
+            temp[20].rotation.z-=Math.PI/32;
+            m++;
+        }
+        if(n<32 && m==15){
+            temp[27].rotation.x+=Math.PI/32;
+            n++;
+        }
+    }
     renderer.render( scene, camera );
 }
 
