@@ -4,7 +4,7 @@ There is no required method to compile the code, simply open final.html in the c
 
 Directories:
 
--code
+**code**
 
   +this directory contains the code necessary to display the project
 
@@ -29,7 +29,7 @@ Directories:
     *this file contains the loading functions to ensure the model gets loaded in the proper order
 
 
--report
+**report**
 
   +this directory contains the report components
 
@@ -50,7 +50,7 @@ Directories:
     *this video displays the loading of the lamp, and a demonstration of the functionality of some of the buttons
 
 
--data
+**data**
 
   +this directory contains the model data
 
