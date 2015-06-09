@@ -1,4 +1,5 @@
 # 160Final 
+(This project can also be accessed at https://github.com/dnalexander/160Final)
 This project was written on a Windows 7 desktop and a Windows 8 laptop using JetBrains' WebStorm and AptanaStudio3. It was tested using Google Chrome. 
 There is no required method to compile the code, simply open final.html in the code directory and the project will be presented to you.
 Directories:
