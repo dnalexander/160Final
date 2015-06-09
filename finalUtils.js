@@ -38,7 +38,7 @@ function moveCam(dir){
 
 function loadPart(name){
     var jsonLoader = new THREE.JSONLoader();
-    jsonLoader.load("./modelData/"+name+".js", function(geometry, materials){
+    jsonLoader.load("./modelData/"+name+".js", function(geometry){
         var mat = new THREE.MeshPhongMaterial({
             shading: THREE.SmoothShading
         });
@@ -48,98 +48,93 @@ function loadPart(name){
     });
 }
 
-function addData(geometry, materials){
-    var mat = new THREE.MeshPhongMaterial({
-        shading: THREE.SmoothShading
-    });
-    var mesh = new THREE.Mesh(geometry, mat);
-    mesh.name = name;
-    lamp.add(mesh);
-}
-
 function render() {
     requestAnimationFrame( render );
     renderer.render( scene, camera );
 }
 
+var temp = [];
 function childify(){
     //connect base to base_to_neck_tower
-    lamp.children[0].add(lamp.children[1]);
+    for(var i=0; i<lamp.children.length; i++){
+        temp.push(lamp.children[i]);
+    }
+    temp[0].add(temp[1]);
 
     //connect base_to_neck_tower to bottom_neck_to_base
-    lamp.children[1].add(lamp.children[2]);
+    temp[1].add(temp[2]);
 
     //connect bottom_neck_to_base to:
     //bottom_pin_back
     //base_to_neck_sides
     //center_pin_back
     //bottom_neck_sides
-    lamp.children[2].add(lamp.children[4]);
-    lamp.children[2].add(lamp.children[3]);
-    lamp.children[2].add(lamp.children[8]);
-    lamp.children[2].add(lamp.children[7]);
+    temp[2].add(temp[4]);
+    temp[2].add(temp[3]);
+    temp[2].add(temp[8]);
+    temp[2].add(temp[7]);
 
     /* connect base_to_neck_sides to:
-    bottom_pin_front
-    bottom_pin_mid
+     bottom_pin_front
+     bottom_pin_mid
      */
-    lamp.children[3].add(lamp.children[5]);
-    lamp.children[3].add(lamp.children[6]);
+    temp[3].add(temp[5]);
+    temp[3].add(temp[6]);
 
     //connect bottom_pin_front to bottom_brace_sides
-    lamp.children[5].add(lamp.children[9]);
+    temp[5].add(temp[9]);
 
     //connect bottom_pin_mid to bands
-    lamp.children[6].add(lamp.children[10]);
-    lamp.children[6].add(lamp.children[11]);
+    temp[6].add(temp[10]);
+    temp[6].add(temp[11]);
 
     //connect bands to center_pin_mid
-    lamp.children[10].add(lamp.children[12]);
-    lamp.children[11].add(lamp.children[12]);
+    temp[10].add(temp[12]);
+    temp[11].add(temp[12]);
 
     /*connect bottom_neck_sides to:
-    center_pin_front
-    neck_pin_back
+     center_pin_front
+     neck_pin_back
      */
-    lamp.children[7].add(lamp.children[13]);
-    lamp.children[7].add(lamp.children[17]);
+    temp[7].add(temp[13]);
+    temp[7].add(temp[17]);
 
     /* connect neck_pin_back to:
-    springs
-    center_neck_back
+     springs
+     center_neck_back
      */
-    lamp.children[17].add(lamp.children[18]);
-    lamp.children[17].add(lamp.children[19]);
-    lamp.children[17].add(lamp.children[15]);
+    temp[17].add(temp[18]);
+    temp[17].add(temp[19]);
+    temp[17].add(temp[15]);
 
     //connect center_pin_front to center_neck_front
-    lamp.children[13].add(lamp.children[14]);
+    temp[13].add(temp[14]);
 
     /*connect center_neck_front to:
      front_spring_pin
      top_neck_pin_bottom
      */
-    lamp.children[14].add(lamp.children[16]);
-    lamp.children[14].add(lamp.children[22]);
+    temp[14].add(temp[16]);
+    temp[14].add(temp[22]);
 
     //connect center_neck_back to top_neck_pin_back
-    lamp.children[15].add(lamp.children[23]);
+    temp[15].add(temp[23]);
 
     //connect top_neck_pin_back to top_neck_sides
-    lamp.children[23].add(lamp.children[20]);
+    temp[23].add(temp[20]);
 
     //connect top_neck_sides to top_neck_pin_top
-    lamp.children[20].add(lamp.children[21]);
+    temp[20].add(temp[21]);
 
     //connect top_neck_pin_top to head_to_neck
-    lamp.children[21].add(lamp.children[27]);
+    temp[21].add(temp[27]);
 
     //connect head_to_neck to head_case
-    lamp.children[27].add(lamp.children[25]);
+    temp[27].add(temp[25]);
 
     //connect head_case to head_to_bulb
-    lamp.children[25].add(lamp.children[24]);
+    temp[25].add(temp[24]);
 
     //connect head_to_bulb to bulb
-    lamp.children[24].add(lamp.children[26]);
+    temp[24].add(temp[26]);
 }

@@ -14,6 +14,7 @@
 <script src="model.js"></script>
 <script src="handleInput.js"></script>
 <script src="finalUtils.js"></script>
+<script src="loads.js"></script>
 <script src="final.js"></script>
 <button onclick="render()">Draw</button>
 <button onclick="moveCam('left')">Pan Left</button>
@@ -26,7 +27,9 @@
 <button onclick="moveCam('rotDown')">Rotate Down</button-->
 <button onclick="moveCam('in')">Zoom In</button>
 <button onclick="moveCam('out')">Zoom Out</button>
-<button onclick="console.log(lamp.children)">debug</button><br>
+<button onclick="loadBase()">debug</button>
+<button onclick="temp[0].position.x+=1;">debug2</button>
+<button onclick="temp[1].position.x+=1;">debug3</button><br>
 </body>
 <button onclick="loadPart('lamp_base')">1</button>
 <button onclick="loadPart('base_to_neck_tower')">2</button>
@@ -55,5 +58,6 @@
 <button onclick="loadPart('head_to_bulb')">25</button>
 <button onclick="loadPart('head_case')">26</button>
 <button onclick="loadPart('bulb')">27</button>
-<button onclick="loadPart('head_to_neck')">28</button>
+<button onclick="loadPart('head_to_neck')">28</button><br>
+<button onclick="childify()">Create Hierarchy</button>
 </html>
