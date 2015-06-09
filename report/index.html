@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>Donovan Alexander's Final Project</title>
+	<link href="style.css" rel="stylesheet" type="text/css">
+	<link href="reset.css" rel="stylesheet" type="text/css">
+	
+	<!--COMMENT: This allows you to link to a font-->
+	<link href='http://fonts.googleapis.com/css?family=Share+Tech' rel='stylesheet' type='text/css'>
+    <script type="text/javascript">
+        function showSpoiler(obj)
+        {
+            var inner = obj.parentNode.getElementsByTagName("div")[0];
+            if (inner.style.display == "none")
+                inner.style.display = "";
+            else
+                inner.style.display = "none";
+        }
+    </script>
+</head>
+
+
+
+<body>
+
+		
+<div id="container">
+	
+
+	<div id="nav">
+
+	</div>
+	
+	<div id="header">
+		<p class="title">Rendering and Moving an Articulated Lamp</p>
+      <p class="tagline">A Project by Donovan Alexander</p>
+	</div>
+	
+	
+	<div class="content">
+
+        <p>My final project consists of a 3D Model of a lamp broken down into 28 sub-models that are grouped hierarchically to enable articulated movement.
+            I used Three.JS, Blender, JavaScript, HTML to create this project. It does not have full functionality due to complications with the exported
+            model format and a lack of mechanical knowledge of Three.JS and JavaScript on my end, but it demonstrates proof of concept that hierarchical
+            modeling and motion is possible using these methods and APIs. The part of the project that fails is constraining the axes and motions that certain
+            parts of the lamp can perform, and forcing the parts of the lamp to rotate about their own origin instead of the world's origin.<br><br>
+
+            How to use:<br>
+            *Upon loading the page, the cene, lights, and camera are set up; the project also starts the render animation looop<br>
+            *At your own discretion, you can build the lamp with the Make button. This button starts a chain of function calls that allow the lamp to be built
+            in the correct order every time; it then creates the hierarchical links necessary to preserve lamp movement<br>
+            *You can manipulate the camera with the provided camera control buttons (Left/Right = X-Axis; Up/Down = Y-Axis; In/Out = Z-Axis; Rotations rotate the camera about itself)<br>
+            *You can manipulate the lamp with the provided demo buttons (Move Base translates the base position right along the world's X-Axis; Rotate B-T-N rotates the base of the neck about the world's Y-Axis;
+            Rotate Head rotates the head of the lamp [bulb, switch, cover] about the world's X-Axis; Move B-o-N moves the back of the neck piece left along the world's X-Axis)<br>
+
+            <br>How it works:<br>
+            *A model of the lamp is generated in an external 3D Modeling Program (I used Blender) and is exported to a readable format (I used [*].obj)<br>
+            *The exported files are then converted to JSON Objects using Three.JS's utility (convert_obj_three.py located in Three/utils/converters/obj)<br>
+            *The JSON Object files are read in using Three.JS's Loader (JSON Loader located in Three/examples/js/loaders/AssimpJSONLoader.js) and are then treated as mesh objects<br>
+            *The mesh objects for the lamp are loaded into the Three.JS scene created by init.js and are displayed and rendered using the respective Three.JS functions
+              -The mesh objects are all stored in an array that maintains the hierarchy to manipulate each part as necessary (this array is named group and is created in init.js)<br>
+            *The mesh objects are then manipulated by the functions in finalUtils.js and the buttons given in final.html
+              -This is done by manipulating the components (position and rotation values) of the meshes individually; the changes are then propagated to the linked meshes
+
+            <br><br>Sample Output:<br>
+            After loading, prior to transformation:<br>
+            <div class="spoiler">
+            <input type="button" onclick="showSpoiler(this);" value="Show/Hide Image" />
+            <div class="inner" style="display:none;">
+                <img src="rendered.jpg">
+            </div><br><br>
+
+            After loading and transformation:<br>
+            <div class="spoiler">
+            <input type="button" onclick="showSpoiler(this);" value="Show/Hide Image" />
+            <div class="inner" style="display:none;">
+                <img src="demoed.jpg">
+            </div>
+
+        </p>
+
+	
+	</div> <!--end of content-->		
+	
+	
+</div>	<!--end of container-->	
+
+
+<div id="footer">
+</div>
+	
+</body>
+
+</html>
