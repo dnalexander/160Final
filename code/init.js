@@ -1,6 +1,9 @@
 /**
  * Created by Donovan on 6/1/2015.
+ * this file initializes global variables
  */
+
+//Create the global variables to be used
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 var spotLight = new THREE.SpotLight(0xffffff);
@@ -9,6 +12,7 @@ var renderer = new THREE.WebGLRenderer();
 var lamp = new THREE.Group();
 
 function init() {
+    //This function assigns all of the global variables values
     scene.add(lamp);
     camera.position.z = 5;
     camera.lookAt(new THREE.Vector3(0, 0, 0));

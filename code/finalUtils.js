@@ -1,7 +1,12 @@
 /**
  * Created by Donny on 6/8/2015.
+ * this file contains utility functions used for the project
  */
 function moveCam(dir){
+    //This function moves the camera based on the input
+    //Left/Right = World X-Axis
+    //Up/Down = World Y-Axis
+    //In/Out = World Z-Axis
     switch(dir){
         case "left":
             camera.position.x-=1;
@@ -37,6 +42,7 @@ function moveCam(dir){
 }
 
 function focusCam(){
+    //This function focuses the camera on the lamp base
     if(group[0]){
         camera.lookAt(new THREE.Vector3(group[0].position.x, group[0].position.y, group[0].position.z));
     }else{
@@ -45,6 +51,7 @@ function focusCam(){
 }
 
 function loadPart(name){
+    //This function uses Three.JS's JSON Loader to load the parts of the lamp as JSON objects
     var jsonLoader = new THREE.JSONLoader();
     jsonLoader.load("../data/"+name+".js", function(geometry){
         var mat = new THREE.MeshPhongMaterial({
@@ -55,6 +62,7 @@ function loadPart(name){
         lamp.add(mesh);
     });
 }
+//Vars to be used to demo the links
 var demo=false;
 var i=0;
 var j=0;
@@ -62,7 +70,9 @@ var k=0;
 var m=0;
 var n=0;
 function render() {
+    //This function calls the drawing in an animated way
     requestAnimationFrame( render );
+    //This block of if statements manipulate the lamp in a certain order
     if(demo && group[0]){
         if(i<20){
             group[0].position.x += 0.1;
@@ -90,6 +100,7 @@ function render() {
 
 var group = [];
 function childify(){
+    //This function creates the hierarchy
     //connect base to base_to_neck_tower
     for(var i=0; i<lamp.children.length; i++){
         group.push(lamp.children[i]);

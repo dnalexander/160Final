@@ -1,5 +1,8 @@
 /**
  * Created by Donny on 6/8/2015.
+ * this file holds the load functions for the project
+ * each function loads a portion of the lamp and then calls the next portion to be loaded 100 milliseconds later
+ * this ensures that the lamp gets placed in the proper configuration each time
  */
 function loadBase(){
     loadPart('lamp_base');

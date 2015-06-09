@@ -27,11 +27,6 @@
 		
 <div id="container">
 	
-
-	<div id="nav">
-
-	</div>
-	
 	<div id="header">
 		<p class="title">Rendering and Moving an Articulated Lamp</p>
       <p class="tagline">A Project by Donovan Alexander</p>
@@ -50,7 +45,7 @@
             *Upon loading the page, the cene, lights, and camera are set up; the project also starts the render animation looop<br>
             *At your own discretion, you can build the lamp with the Make button. This button starts a chain of function calls that allow the lamp to be built
             in the correct order every time; it then creates the hierarchical links necessary to preserve lamp movement<br>
-            *You can manipulate the camera with the provided camera control buttons (Left/Right = X-Axis; Up/Down = Y-Axis; In/Out = Z-Axis; Rotations rotate the camera about itself)<br>
+            *You can manipulate the camera with the provided camera control buttons (Left/Right = X-Axis; Up/Down = Y-Axis; In/Out = Z-Axis; Rotations rotate the camera about itself; Focus On Lamp makes the target of the camera the lamp's base)<br>
             *You can manipulate the lamp with the provided demo buttons (Move Base translates the base position right along the world's X-Axis; Rotate B-T-N rotates the base of the neck about the world's Y-Axis;
             Rotate Head rotates the head of the lamp [bulb, switch, cover] about the world's X-Axis; Move B-o-N moves the back of the neck piece left along the world's X-Axis)<br>
 
@@ -69,17 +64,14 @@
             <input type="button" onclick="showSpoiler(this);" value="Show/Hide Image" />
             <div class="inner" style="display:none;">
                 <img src="rendered.jpg">
-            </div><br><br>
+            </div></div><br><br>
 
             After loading and transformation:<br>
             <div class="spoiler">
             <input type="button" onclick="showSpoiler(this);" value="Show/Hide Image" />
             <div class="inner" style="display:none;">
                 <img src="demoed.jpg">
-            </div>
-
-        </p>
-
+            </div></div>
 	
 	</div> <!--end of content-->		
 	
